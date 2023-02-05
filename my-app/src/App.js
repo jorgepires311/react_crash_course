@@ -24,13 +24,33 @@ function App() {
       "reminder": false
     },
 ] )
-  return (
+// Delete Task
+const deleteTask = (id) => {
+  console.log('delete', id)
+  setTasks(tasks.filter((task) => task.id != id))
+}
+// Toggle Reminder
+const toggleReminder = (id) => {
+  console.log('reminder', id)
+  setTasks(tasks.cmap((task) =>
+      task.id === id ? {...task, reminder:!task.reminder } :task
+    )
+  )
+}
+
+return (
     <div className="container">
       <h1>Hello {name}</h1>
       <Header/>
-      <Tasks tasks={tasks}/>
+      {tasks.length > 0 ? (
+      <Tasks tasks={tasks} onDelete={deleteTask}  onToggle={toggleReminder}/>
+      ) : (
+        'No Tasks to Display'
+      )}
     </div>
   )
 }
+
+
 
 export default App;
