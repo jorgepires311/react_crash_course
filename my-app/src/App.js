@@ -96,7 +96,7 @@ function App() {
               </>
             }
           />
-          <Route path="/about" component={About} />
+          <Route path="/about"  element={<About />} />
         </Routes>
         <Footer />
       </div>
